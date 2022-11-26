@@ -1,18 +1,14 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
-import { Title } from '../../components/Title';
+import {Title} from '../../components/Title';
 
-import { useUser } from '../../store/user';
+import {useUser} from '../../store/user';
 
-import { styles } from './styles';
-import { Input } from '../../components/Input';
-import { ButtonPrimary } from '../../components/ButtonPrimary';
+import {styles} from './styles';
+
 import Calendar from '../../components/Calendar';
 
-const logo = require('../../assets/image/logo.png');
-
-export default function Home() {
-  const { user } = useUser();
+export const Home = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -21,4 +17,4 @@ export default function Home() {
       <Calendar />
     </View>
   );
-}
+};

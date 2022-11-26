@@ -1,8 +1,8 @@
-import { View, Text, TextInput, TextInputProps } from 'react-native';
+import {View, Text, TextInput, TextInputProps} from 'react-native';
 import React from 'react';
 
-import { styles } from './styles';
-import { colors } from '../../global/styles';
+import {styles} from './styles';
+import {colors} from '../../global/styles';
 
 type Props = TextInputProps & {
   titleInput?: string;

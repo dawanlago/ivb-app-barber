@@ -1,21 +1,15 @@
-import { Dimensions, View, Text } from 'react-native';
+import {Dimensions, View, Text} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 
 import React from 'react';
-import { styles } from './styles';
-const days = [
-  { day: '7' },
-  { day: '8' },
-  { day: '9' },
-  { day: '10' },
-  { day: '11' },
-];
+import {styles} from './styles';
+const days = [{day: '7'}, {day: '8'}, {day: '9'}, {day: '10'}, {day: '11'}];
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = SLIDER_WIDTH * 0.2;
 
 export default function Calendar() {
-  function renderItem({ item, index }) {
+  function renderItem({item}) {
     return (
       <View style={styles.calendarContainer}>
         <Text style={styles.calendar}>{item.day}</Text>

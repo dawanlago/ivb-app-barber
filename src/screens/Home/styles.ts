@@ -1,5 +1,5 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { colors, fonts } from '../../global/styles';
+import {Dimensions, StyleSheet} from 'react-native';
+import {colors} from '../../global/styles';
 const height = Dimensions.get('screen').height;
 
 export const styles = StyleSheet.create({

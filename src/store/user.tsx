@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {createContext, useContext, useState} from 'react';
 
 type UserProps = {
   children: React.ReactNode;
@@ -42,4 +42,4 @@ function useUser() {
   return context;
 }
 
-export { UserProvider, useUser };
+export {UserProvider, useUser};

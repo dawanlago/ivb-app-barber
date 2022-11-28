@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   },
 
   textButton: {
-    fontFamily: fonts.title,
+    fontFamily: fonts.title500,
     fontSize: 20,
     color: colors.textDark10,
   },

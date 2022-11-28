@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   header: {
     justifyContent: 'flex-start',
     alignItems: 'center',
+    marginBottom: 10,
   },
   contentLogin: {
     justifyContent: 'flex-start',

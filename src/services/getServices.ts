@@ -1,7 +1,13 @@
 import firebase from './firebase';
 
-export const getServices = async () => {
-  let data = {};
+interface Service {
+  name: string;
+  price: number;
+  time: number;
+}
+
+export const getServices = async (): Promise<Array<Service>> => {
+  let data = [] as Service[];
   await firebase
     .database()
     .ref('barber-shop')
@@ -11,6 +17,5 @@ export const getServices = async () => {
         data = childItem.val();
       });
     });
-
   return data;
 };

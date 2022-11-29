@@ -17,6 +17,10 @@ import {Divisor} from '../../components/Divisor';
 import {ButtonGmail} from '../../components/ButtonGmail';
 import {ButtonFacebook} from '../../components/ButtonFacebook';
 
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamsList} from '../../routes/auth.routes';
+import {useNavigation} from '@react-navigation/native';
+
 const logo = require('../../assets/image/logo.png');
 
 interface IService {
@@ -25,7 +29,10 @@ interface IService {
   time: number;
 }
 
+type screenProp = NativeStackNavigationProp<RootStackParamsList, 'Login'>;
+
 export const Login = () => {
+  const navigation = useNavigation<screenProp>();
   const [services, setServices] = useState<IService[]>([]);
 
   useEffect(() => {
@@ -33,6 +40,11 @@ export const Login = () => {
       setServices(res);
     });
   }, []);
+
+  function handleCreateAccount() {
+    console.log('Clicou');
+    navigation.navigate('CreateAccount');
+  }
 
   return (
     <KeyboardAvoidingView
@@ -48,15 +60,22 @@ export const Login = () => {
           <Input placeholderInput="Email" />
           <Input placeholderInput="Senha" />
           <ButtonPrimary titleButton="Entrar" />
+          <View style={styles.socialLogin}>
+            <ButtonGmail />
+            <ButtonFacebook />
+          </View>
           <Divisor titleDivisor="ou" />
-          <ButtonGmail titleButton="Entrar com gmail" />
-          <ButtonFacebook titleButton="Entrar com facebook" />
         </View>
-        <TouchableOpacity activeOpacity={0.95} style={styles.createAccount}>
-          <Text style={styles.createAccountText}>
-            Criar uma conta com email
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.containerCreateAccount}>
+          <TouchableOpacity
+            activeOpacity={0.95}
+            style={styles.createAccount}
+            onPress={() => handleCreateAccount}>
+            <Text style={styles.createAccountText}>
+              Criar uma conta com email
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );

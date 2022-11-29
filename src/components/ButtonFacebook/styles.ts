@@ -8,22 +8,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 55,
-    width: WIDTH - 60,
-    backgroundColor: colors.facebookPrimary,
-    borderRadius: 5,
-    marginVertical: 10,
+    height: 50,
+    width: 60,
   },
-  containerLogo: {
-    alignItems: 'flex-start',
-  },
-  containerTitle: {
-    alignItems: 'center',
-    width: '80%',
-  },
-  textButton: {
-    fontFamily: fonts.title500,
-    fontSize: 20,
-    color: colors.light,
+  imgFacebook: {
+    width: 48,
+    height: 48,
   },
 });

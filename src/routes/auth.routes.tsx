@@ -4,11 +4,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {Login} from '../screens/Login';
 import {Home} from '../screens/Home';
+import {CreateAccount} from '../screens/CreateAccount';
+
 const Stack = createNativeStackNavigator();
 
 export type RootStackParamsList = {
   Login: undefined;
   Home: undefined;
+  CreateAccount: undefined;
 };
 
 const AuthRoutes: React.FC = () => {
@@ -18,6 +21,11 @@ const AuthRoutes: React.FC = () => {
         <Stack.Screen
           name="Login"
           component={Login}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="CreateAccount"
+          component={CreateAccount}
           options={{headerShown: false}}
         />
         <Stack.Screen

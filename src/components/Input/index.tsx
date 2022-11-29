@@ -10,17 +10,22 @@ type Props = TextInputProps & {
   placeholderInput: string;
 };
 export const Input: React.FC<Props> = ({
-  titleInput,
+  titleInput = '',
   value,
   placeholderInput,
   ...rest
 }: Props) => {
   return (
-    <TextInput
-      style={styles.input}
-      value={value}
-      placeholder={placeholderInput}
-      placeholderTextColor={colors.darkOpacity}
-    />
+    <View style={styles.container}>
+      {titleInput.length > 0 && (
+        <Text style={styles.titleInput}>{titleInput}</Text>
+      )}
+      <TextInput
+        style={styles.input}
+        value={value}
+        placeholder={placeholderInput}
+        placeholderTextColor={colors.darkOpacity}
+      />
+    </View>
   );
 };

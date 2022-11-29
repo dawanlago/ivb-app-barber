@@ -6,44 +6,36 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch',
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
     paddingHorizontal: 30,
     height: height,
     backgroundColor: colors.light,
     paddingBottom: 55,
   },
   header: {
+    marginTop: 50,
     justifyContent: 'flex-start',
     alignItems: 'center',
     marginBottom: 10,
   },
-  contentLogin: {
+  contentForm: {
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-  createAccount: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  createAccountText: {
-    fontSize: 17,
-    fontFamily: fonts.title500,
-    textDecorationLine: 'underline',
-    color: colors.textDark10,
-  },
-  logo: {
-    marginTop: 10,
-  },
-  socialLogin: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    width: '100%',
-    marginVertical: 20,
-  },
-  containerCreateAccount: {
+  contentImage: {
     justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: 115,
+    height: 115,
+    borderColor: colors.darkOpacity,
+    borderWidth: 2,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  textImage: {
     marginTop: 20,
+    fontSize: 12,
+    fontFamily: fonts.title500,
+    color: colors.textDark10,
   },
 });

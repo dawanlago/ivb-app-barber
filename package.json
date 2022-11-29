@@ -21,7 +21,8 @@
     "react-native-gesture-handler": "^2.1.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
-    "react-native-snap-carousel": "4.0.0-beta.6"
+    "react-native-snap-carousel": "4.0.0-beta.6",
+    "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -31,6 +32,7 @@
     "@types/jest": "^26.0.23",
     "@types/react": "^18.0.21",
     "@types/react-native": "^0.70.4",
+    "@types/react-native-vector-icons": "^6.4.12",
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",

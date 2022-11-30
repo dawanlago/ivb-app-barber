@@ -10,6 +10,7 @@ export const colors = {
   darkOpacity80: 'rgba(51,51,51, .80)',
   btnPrimary: '#B88A2C',
   facebookPrimary: '#3B5998',
+  overlay: 'rgba(0,0,0,0.85)',
 };
 
 export const fonts = {

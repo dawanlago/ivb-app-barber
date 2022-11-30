@@ -1,11 +1,12 @@
 import {View, FlatList} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Title} from '../../components/Title';
 
 import {styles} from './styles';
 
 import {ButtonBack} from '../../components/ButtonBack';
 import {CardService} from '../../components/CardService';
+import {ModalSubService} from '../../components/ModalSubService';
 
 interface Detail {
   description: string;
@@ -35,6 +36,36 @@ export const ServiceList = () => {
     },
   ];
 
+  const subServices = [
+    {
+      id: 1,
+      description: 'Progressiva',
+      price: 70.0,
+      time: '60',
+    },
+    {
+      id: 2,
+      description: 'Botox',
+      price: 70.0,
+      time: '60',
+    },
+    {
+      id: 3,
+      description: 'Alinhamento',
+      price: 30.0,
+      time: '30',
+    },
+  ];
+
+  const [modalSubService, setModalSubService] = useState<boolean>(false);
+
+  function handleCloseModal() {
+    setModalSubService(false);
+  }
+  function handleOpenModal() {
+    setModalSubService(true);
+  }
+
   return (
     <View style={styles.container}>
       <ButtonBack />
@@ -50,10 +81,16 @@ export const ServiceList = () => {
           showsVerticalScrollIndicator={false}
           data={services}
           renderItem={({item}: {item: Detail}) => (
-            <CardService details={item} />
+            <CardService details={item} click={() => handleOpenModal()} />
           )}
         />
       </View>
+      {modalSubService && (
+        <ModalSubService
+          closeModal={() => handleCloseModal()}
+          data={subServices}
+        />
+      )}
     </View>
   );
 };

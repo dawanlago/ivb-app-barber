@@ -1,4 +1,4 @@
-import {Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import {styles} from './styles';
@@ -11,10 +11,18 @@ interface Detail {
 
 type Props = {
   details: Detail;
+  click: () => void;
 };
-export const CardService: React.FC<Props> = ({details, ...rest}: Props) => {
+export const CardService: React.FC<Props> = ({
+  details,
+  click,
+  ...rest
+}: Props) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      onPress={click}
+      style={styles.container}
+      activeOpacity={0.85}>
       <Text style={styles.description}>{details.description}</Text>
       <View style={styles.contentDetails}>
         <Text style={styles.details}>{details.time}min</Text>
@@ -22,6 +30,6 @@ export const CardService: React.FC<Props> = ({details, ...rest}: Props) => {
           R$ {details.price.toFixed(2).toString().replace('.', ',')}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };

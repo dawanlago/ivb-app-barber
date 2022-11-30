@@ -5,6 +5,7 @@ const WIDTH = Dimensions.get('screen').width;
 
 export const styles = StyleSheet.create({
   button: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     height: 55,
@@ -15,10 +16,21 @@ export const styles = StyleSheet.create({
     borderTopStartRadius: 5,
     borderTopEndRadiusRadius: 5,
   },
-
+  containerEmpty: {
+    width: '20%',
+  },
+  containerButton: {
+    width: '50%',
+    alignItems: 'center',
+  },
   textButton: {
     fontFamily: fonts.title500,
     fontSize: 20,
     color: colors.textDark10,
+  },
+  containerPrice: {
+    width: '30%',
+    alignItems: 'flex-end',
+    paddingRight: 10,
   },
 });

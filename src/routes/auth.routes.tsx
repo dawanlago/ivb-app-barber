@@ -19,6 +19,11 @@ const AuthRoutes: React.FC = () => {
     <NavigationContainer independent={true}>
       <Stack.Navigator screenOptions={{animation: 'slide_from_right'}}>
         <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="Login"
           component={Login}
           options={{headerShown: false}}
@@ -26,11 +31,6 @@ const AuthRoutes: React.FC = () => {
         <Stack.Screen
           name="CreateAccount"
           component={CreateAccount}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

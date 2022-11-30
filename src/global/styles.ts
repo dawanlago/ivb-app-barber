@@ -4,6 +4,7 @@ export const colors = {
   light20: '#FAFAFA',
   textDark: '#000000',
   textDark10: '#333333',
+  textDark90: '#cccccc',
   darkOpacity: 'rgba(51,51,51, .50)',
   darkOpacity20: 'rgba(51,51,51, .20)',
   darkOpacity80: 'rgba(51,51,51, .80)',

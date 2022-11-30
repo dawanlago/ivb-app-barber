@@ -30,7 +30,7 @@ export const CreateAccount = () => {
     getServices().then(res => {
       setServices(res);
     });
-  }, []);
+  }, [services]);
 
   return (
     <KeyboardAvoidingView

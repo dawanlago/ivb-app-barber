@@ -1,5 +1,5 @@
-import {View, FlatList} from 'react-native';
-import React, {useState} from 'react';
+import {View} from 'react-native';
+import React from 'react';
 import {Title} from '../../components/Title';
 
 import {styles} from './styles';

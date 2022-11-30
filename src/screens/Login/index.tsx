@@ -13,7 +13,7 @@ import {styles} from './styles';
 import {Input} from '../../components/Input';
 import {ButtonPrimary} from '../../components/ButtonPrimary';
 import {getServices} from '../../services/getServices';
-import {Divisor} from '../../components/Divisor';
+
 import {ButtonGmail} from '../../components/ButtonGmail';
 import {ButtonFacebook} from '../../components/ButtonFacebook';
 
@@ -64,7 +64,6 @@ export const Login = () => {
             <ButtonGmail />
             <ButtonFacebook />
           </View>
-          <Divisor titleDivisor="ou" />
         </View>
         <View style={styles.containerCreateAccount}>
           <TouchableOpacity

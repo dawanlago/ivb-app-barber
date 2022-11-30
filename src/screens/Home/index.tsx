@@ -6,6 +6,8 @@ import {styles} from './styles';
 import {Checkbox} from '../../components/Checkbox';
 
 import {CardSchedule} from '../../components/CardSchedule';
+import {ButtonAction} from '../../components/ButtonAction';
+import {IconProfile} from '../../components/IconProfile';
 
 interface Detail {
   barber: string;
@@ -58,6 +60,46 @@ export const Home = () => {
       time: '09:00',
       day: '23/09/22',
     },
+    {
+      id: 6,
+      barber: 'Igor Vieira',
+      service: 'Cabelo',
+      price: 30.0,
+      time: '09:00',
+      day: '23/09/22',
+    },
+    {
+      id: 7,
+      barber: 'Igor Vieira',
+      service: 'Cabelo',
+      price: 30.0,
+      time: '09:00',
+      day: '23/09/22',
+    },
+    {
+      id: 8,
+      barber: 'Igor Vieira',
+      service: 'Cabelo',
+      price: 30.0,
+      time: '09:00',
+      day: '23/09/22',
+    },
+    {
+      id: 9,
+      barber: 'Igor Vieira',
+      service: 'Cabelo',
+      price: 30.0,
+      time: '09:00',
+      day: '23/09/22',
+    },
+    {
+      id: 10,
+      barber: 'Igor Vieira',
+      service: 'Cabelo',
+      price: 30.0,
+      time: '09:00',
+      day: '23/09/22',
+    },
   ];
 
   function handleShowAllShedule() {
@@ -66,6 +108,7 @@ export const Home = () => {
 
   return (
     <View style={styles.container}>
+      <IconProfile />
       <View style={styles.header}>
         <Title
           title="Agendamentos"
@@ -83,6 +126,7 @@ export const Home = () => {
           <Text style={styles.emptySchedule}>Nenhum agendamento em aberto</Text>
         ) : (
           <FlatList
+            showsVerticalScrollIndicator={false}
             data={schedule}
             renderItem={({item}: {item: Detail}) => (
               <CardSchedule details={item} />
@@ -90,6 +134,7 @@ export const Home = () => {
           />
         )}
       </View>
+      <ButtonAction titleButton="Iniciar agendamento" />
     </View>
   );
 };

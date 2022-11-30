@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
   },
   content: {
     marginTop: 20,
+    marginBottom: 50,
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',

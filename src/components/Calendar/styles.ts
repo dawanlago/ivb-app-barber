@@ -3,6 +3,7 @@ import {colors, fonts} from '../../global/styles';
 
 export const styles = StyleSheet.create({
   container: {
+    height: 120,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -12,6 +13,7 @@ export const styles = StyleSheet.create({
     color: colors.textDark10,
   },
   calendarContainer: {
+    height: '80%',
     justifyContent: 'center',
     alignItems: 'center',
   },

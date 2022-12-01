@@ -9,10 +9,25 @@ import {ButtonBack} from '../../components/ButtonBack';
 import Calendar from '../../components/Calendar';
 import {ButtonAction} from '../../components/ButtonAction';
 
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamsList} from '../../routes/auth.routes';
+import {useNavigation} from '@react-navigation/native';
+
+type screenProp = NativeStackNavigationProp<RootStackParamsList, 'SelectDay'>;
+
 export const SelectDay = () => {
+  const navigation = useNavigation<screenProp>();
+
+  function handleSelectBarber() {
+    navigation.navigate('SelectBarber');
+  }
+
+  function handleGoBack() {
+    navigation.goBack();
+  }
   return (
     <View style={styles.container}>
-      <ButtonBack />
+      <ButtonBack click={handleGoBack} />
       <View style={styles.header}>
         <Title
           title="Vamos agendar?"
@@ -23,7 +38,11 @@ export const SelectDay = () => {
       <View style={styles.content}>
         <Calendar />
       </View>
-      <ButtonAction titleButton="Continuar" price={100.0} />
+      <ButtonAction
+        titleButton="Continuar"
+        price={100.0}
+        click={handleSelectBarber}
+      />
     </View>
   );
 };

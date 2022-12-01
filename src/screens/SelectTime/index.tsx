@@ -9,13 +9,20 @@ import {ButtonBack} from '../../components/ButtonBack';
 import {ButtonAction} from '../../components/ButtonAction';
 import {CardTime} from '../../components/CardTime';
 
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamsList} from '../../routes/auth.routes';
+import {useNavigation} from '@react-navigation/native';
+
 interface Detail {
   id: number;
   time: string;
   selected: boolean;
 }
 
+type screenProp = NativeStackNavigationProp<RootStackParamsList, 'SelectTime'>;
+
 export const SelectTime = () => {
+  const navigation = useNavigation<screenProp>();
   const schedules = [
     {
       id: 1,
@@ -74,9 +81,15 @@ export const SelectTime = () => {
     },
   ];
 
+  function handleScheduleConfirm() {
+    navigation.navigate('ScheduleConfirm');
+  }
+  function handleGoBack() {
+    navigation.goBack();
+  }
   return (
     <View style={styles.container}>
-      <ButtonBack />
+      <ButtonBack click={handleGoBack} />
       <View style={styles.header}>
         <Title
           title="Vamos agendar?"
@@ -93,7 +106,11 @@ export const SelectTime = () => {
           )}
         />
       </View>
-      <ButtonAction titleButton="Continuar" price={100} />
+      <ButtonAction
+        titleButton="Continuar"
+        price={100}
+        click={handleScheduleConfirm}
+      />
     </View>
   );
 };

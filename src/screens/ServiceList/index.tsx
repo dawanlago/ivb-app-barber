@@ -8,13 +8,18 @@ import {ButtonBack} from '../../components/ButtonBack';
 import {CardService} from '../../components/CardService';
 import {ModalSubService} from '../../components/ModalSubService';
 
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamsList} from '../../routes/auth.routes';
+import {useNavigation} from '@react-navigation/native';
+
 interface Detail {
   description: string;
   price: number;
   time: string;
 }
-
+type screenProp = NativeStackNavigationProp<RootStackParamsList, 'ServiceList'>;
 export const ServiceList = () => {
+  const navigation = useNavigation<screenProp>();
   const services = [
     {
       id: 1,
@@ -66,9 +71,17 @@ export const ServiceList = () => {
     setModalSubService(true);
   }
 
+  function handleSelectDay() {
+    navigation.navigate('SelectDay');
+  }
+
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
   return (
     <View style={styles.container}>
-      <ButtonBack />
+      <ButtonBack click={handleGoBack} />
       <View style={styles.header}>
         <Title
           title="O que pretende fazer?"
@@ -87,6 +100,7 @@ export const ServiceList = () => {
       </View>
       {modalSubService && (
         <ModalSubService
+          click={handleSelectDay}
           closeModal={() => handleCloseModal()}
           data={subServices}
         />

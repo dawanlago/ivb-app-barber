@@ -23,12 +23,14 @@ interface Detail {
 type Props = ModalProps & {
   heightModal?: string;
   data: [];
+  click: () => void;
   closeModal: () => void;
 };
 
 export const ModalSubService: React.FC<Props> = ({
   heightModal,
   data,
+  click,
   closeModal,
   ...rest
 }: Props) => {
@@ -49,7 +51,7 @@ export const ModalSubService: React.FC<Props> = ({
               )}
             />
           </KeyboardAvoidingView>
-          <ButtonAction titleButton="Continuar sem adicionar" />
+          <ButtonAction titleButton="Continuar sem adicionar" click={click} />
         </View>
       </TouchableWithoutFeedback>
     </Modal>

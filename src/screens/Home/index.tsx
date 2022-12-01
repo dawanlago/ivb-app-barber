@@ -9,6 +9,10 @@ import {CardSchedule} from '../../components/CardSchedule';
 import {ButtonAction} from '../../components/ButtonAction';
 import {IconProfile} from '../../components/IconProfile';
 
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamsList} from '../../routes/auth.routes';
+import {useNavigation} from '@react-navigation/native';
+
 interface Detail {
   barber: string;
   service: string;
@@ -17,7 +21,10 @@ interface Detail {
   day: string;
 }
 
+type screenProp = NativeStackNavigationProp<RootStackParamsList, 'Home'>;
+
 export const Home = () => {
+  const navigation = useNavigation<screenProp>();
   const [emptySchedule, setEmptySchedule] = useState<boolean>(true);
   const schedule = [
     {
@@ -106,9 +113,17 @@ export const Home = () => {
     setEmptySchedule(!emptySchedule);
   }
 
+  function handleLogout() {
+    navigation.navigate('Login');
+  }
+
+  function handleServiceList() {
+    navigation.navigate('ServiceList');
+  }
+
   return (
     <View style={styles.container}>
-      <IconProfile />
+      <IconProfile click={handleLogout} />
       <View style={styles.header}>
         <Title
           title="Agendamentos"
@@ -134,7 +149,10 @@ export const Home = () => {
           />
         )}
       </View>
-      <ButtonAction titleButton="Iniciar agendamento" />
+      <ButtonAction
+        titleButton="Iniciar agendamento"
+        click={handleServiceList}
+      />
     </View>
   );
 };

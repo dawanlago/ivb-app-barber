@@ -30,7 +30,6 @@ interface IService {
 }
 
 type screenProp = NativeStackNavigationProp<RootStackParamsList, 'Login'>;
-
 export const Login = () => {
   const navigation = useNavigation<screenProp>();
   const [services, setServices] = useState<IService[]>([]);
@@ -41,8 +40,11 @@ export const Login = () => {
     });
   }, []);
 
+  function handleHome() {
+    navigation.navigate('Home');
+  }
+
   function handleCreateAccount() {
-    console.log('Clicou');
     navigation.navigate('CreateAccount');
   }
 
@@ -59,7 +61,7 @@ export const Login = () => {
         <View style={styles.contentLogin}>
           <Input placeholderInput="Email" />
           <Input placeholderInput="Senha" />
-          <ButtonPrimary titleButton="Entrar" />
+          <ButtonPrimary titleButton="Entrar" click={handleHome} />
           <View style={styles.socialLogin}>
             <ButtonGmail />
             <ButtonFacebook />
@@ -69,7 +71,7 @@ export const Login = () => {
           <TouchableOpacity
             activeOpacity={0.95}
             style={styles.createAccount}
-            onPress={() => handleCreateAccount}>
+            onPress={handleCreateAccount}>
             <Text style={styles.createAccountText}>
               Criar uma conta com email
             </Text>

@@ -23,6 +23,10 @@ export const styles = StyleSheet.create({
     width: '50%',
     alignItems: 'center',
   },
+  containerButtonNotPrice: {
+    width: '100%',
+    alignItems: 'center',
+  },
   textButton: {
     fontFamily: fonts.title500,
     fontSize: 20,

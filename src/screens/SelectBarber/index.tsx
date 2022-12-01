@@ -9,15 +9,26 @@ import {ButtonBack} from '../../components/ButtonBack';
 import {ButtonAction} from '../../components/ButtonAction';
 import {CardBarber} from '../../components/CardBarber';
 
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamsList} from '../../routes/auth.routes';
+import {useNavigation} from '@react-navigation/native';
+
 const img = require('../../assets/image/igor.png');
+
+type screenProp = NativeStackNavigationProp<
+  RootStackParamsList,
+  'SelectBarber'
+>;
 
 interface Barber {
   name: string;
   image: string;
   services: string;
+  default: boolean;
 }
 
 export const SelectBarber = () => {
+  const navigation = useNavigation<screenProp>();
   const barbers = [
     {
       id: 1,
@@ -48,9 +59,16 @@ export const SelectBarber = () => {
       default: true,
     },
   ];
+  function handleSelectTime() {
+    navigation.navigate('SelectTime');
+  }
+
+  function handleGoBack() {
+    navigation.goBack();
+  }
   return (
     <View style={styles.container}>
-      <ButtonBack />
+      <ButtonBack click={handleGoBack} />
       <View style={styles.header}>
         <Title
           title="A hora do profissional"
@@ -67,7 +85,11 @@ export const SelectBarber = () => {
           )}
         />
       </View>
-      <ButtonAction titleButton="Continuar" price={100.0} />
+      <ButtonAction
+        titleButton="Continuar"
+        price={100.0}
+        click={handleSelectTime}
+      />
     </View>
   );
 };

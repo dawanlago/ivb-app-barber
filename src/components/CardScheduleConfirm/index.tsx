@@ -16,9 +16,11 @@ interface Detail {
 
 type Props = {
   details: Detail;
+  click: () => void;
 };
 export const CardScheduleConfirm: React.FC<Props> = ({
   details,
+  click,
   ...rest
 }: Props) => {
   return (
@@ -55,7 +57,10 @@ export const CardScheduleConfirm: React.FC<Props> = ({
         <Text style={styles.title}>Barbeiro: </Text>
         <Text style={styles.info}>{details.barber}</Text>
       </View>
-      <TouchableOpacity style={styles.containerButton}>
+      <TouchableOpacity
+        style={styles.containerButton}
+        onPress={click}
+        activeOpacity={1}>
         <Text style={styles.button}>
           Clique aqui para alterar o agendamento
         </Text>

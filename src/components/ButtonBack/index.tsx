@@ -1,12 +1,18 @@
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import {styles} from './styles';
 
-export const ButtonBack: React.FC = () => {
+type Props = {
+  click: () => void;
+};
+export const ButtonBack: React.FC<Props> = ({click}: Props) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      activeOpacity={1}
+      onPress={click}>
       <Text style={styles.back}>Voltar</Text>
-    </View>
+    </TouchableOpacity>
   );
 };

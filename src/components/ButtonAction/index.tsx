@@ -11,23 +11,31 @@ import {styles} from './styles';
 type Props = TouchableOpacityProps & {
   titleButton: string;
   price?: number;
+  click: () => void;
 };
 export const ButtonAction: React.FC<Props> = ({
   titleButton,
   price,
+  click,
   ...rest
 }: Props) => {
   return (
-    <TouchableOpacity activeOpacity={0.85} style={styles.button}>
-      <View style={styles.containerEmpty} />
-      <View style={styles.containerButton}>
+    <TouchableOpacity
+      activeOpacity={0.85}
+      style={styles.button}
+      onPress={click}>
+      {!!price && <View style={styles.containerEmpty} />}
+      <View
+        style={price ? styles.containerButton : styles.containerButtonNotPrice}>
         <Text style={styles.textButton}>{titleButton}</Text>
       </View>
-      <View style={styles.containerPrice}>
-        <Text style={styles.textButton}>
-          R$ {price?.toFixed(2).toString().replace('.', ',')}
-        </Text>
-      </View>
+      {!!price && (
+        <View style={styles.containerPrice}>
+          <Text style={styles.textButton}>
+            R$ {price?.toFixed(2).toString().replace('.', ',')}
+          </Text>
+        </View>
+      )}
     </TouchableOpacity>
   );
 };

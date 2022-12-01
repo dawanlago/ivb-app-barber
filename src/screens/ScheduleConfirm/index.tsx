@@ -9,7 +9,17 @@ import {ButtonBack} from '../../components/ButtonBack';
 import {ButtonAction} from '../../components/ButtonAction';
 import {CardScheduleConfirm} from '../../components/CardScheduleConfirm';
 
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamsList} from '../../routes/auth.routes';
+import {useNavigation} from '@react-navigation/native';
+
+type screenProp = NativeStackNavigationProp<
+  RootStackParamsList,
+  'ScheduleConfirm'
+>;
+
 export const ScheduleConfirm = () => {
+  const navigation = useNavigation<screenProp>();
   const schedule = {
     barberShop: 'Igor Vieira Barbearia',
     address: 'Avenida Jardim Guanabara, 7',
@@ -20,9 +30,21 @@ export const ScheduleConfirm = () => {
     services: 'Cabelo + Alinhamento',
     barber: 'Igor Vieira',
   };
+
+  function handleHome() {
+    navigation.navigate('Home');
+  }
+
+  function handleServiceList() {
+    navigation.navigate('ServiceList');
+  }
+
+  function handleGoBack() {
+    navigation.goBack();
+  }
   return (
     <View style={styles.container}>
-      <ButtonBack />
+      <ButtonBack click={handleGoBack} />
       <View style={styles.header}>
         <Title
           title="Agora é com você"
@@ -31,9 +53,9 @@ export const ScheduleConfirm = () => {
       </View>
 
       <View style={styles.content}>
-        <CardScheduleConfirm details={schedule} />
+        <CardScheduleConfirm details={schedule} click={handleServiceList} />
       </View>
-      <ButtonAction titleButton="Confirmar" price={100} />
+      <ButtonAction titleButton="Confirmar" price={100} click={handleHome} />
     </View>
   );
 };

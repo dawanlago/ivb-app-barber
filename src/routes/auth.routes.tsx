@@ -9,6 +9,7 @@ import {ServiceList} from '../screens/ServiceList';
 import {SelectDay} from '../screens/SelectDay';
 import {SelectBarber} from '../screens/SelectBarber';
 import {SelectTime} from '../screens/SelectTime';
+import {ScheduleConfirm} from '../screens/ScheduleConfirm';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,12 +21,18 @@ export type RootStackParamsList = {
   SelectDay: undefined;
   SelectBarber: undefined;
   SelectTime: undefined;
+  ScheduleConfirm: undefined;
 };
 
 const AuthRoutes: React.FC = () => {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator screenOptions={{animation: 'slide_from_right'}}>
+        <Stack.Screen
+          name="ScheduleConfirm"
+          component={ScheduleConfirm}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="SelectTime"
           component={SelectTime}

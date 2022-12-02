@@ -13,6 +13,7 @@ export const Input: React.FC<Props> = ({
   titleInput = '',
   value,
   placeholderInput,
+
   ...rest
 }: Props) => {
   return (
@@ -25,6 +26,7 @@ export const Input: React.FC<Props> = ({
         value={value}
         placeholder={placeholderInput}
         placeholderTextColor={colors.darkOpacity}
+        {...rest}
       />
     </View>
   );

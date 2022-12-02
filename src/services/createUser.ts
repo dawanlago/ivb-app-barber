@@ -1,11 +1,21 @@
+import {createClient} from './createClient';
 import firebase from './firebase';
 
 interface IUser {
+  name: string;
+  shortName: string;
   email: string;
+  phone: string;
   password: string;
 }
 
-export const createUser = async ({email, password}: IUser) => {
+export const createUser = async ({
+  name,
+  shortName,
+  email,
+  phone,
+  password,
+}: IUser) => {
   let messageError = '';
   const user = await firebase
     .auth()
@@ -28,19 +38,7 @@ export const createUser = async ({email, password}: IUser) => {
       message: messageError,
     };
   }
-
-  return {success: true, data: user};
-
-  // console.log(email, password);
-  // await firebase
-  //   .database()
-  //   .ref('barber-shop')
-  //   .child('000001')
-  //   .once('value', snapshot => {
-  //     snapshot.forEach(childItem => {
-  //       data = childItem.val();
-  //     });
-  //   });
-  console.log(user);
-  return {success: true};
+  const uid = user.user.uid;
+  const client = await createClient({name, shortName, email, phone, uid});
+  return {success: true, data: client};
 };

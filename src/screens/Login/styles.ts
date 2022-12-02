@@ -26,7 +26,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
   },
-  createAccountText: {
+  recoverPassword: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: -10,
+    marginBottom: 10,
+  },
+  textLink: {
     fontSize: 17,
     fontFamily: fonts.title500,
     textDecorationLine: 'underline',

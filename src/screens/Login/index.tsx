@@ -61,6 +61,12 @@ export const Login = () => {
         <View style={styles.contentLogin}>
           <Input placeholderInput="Email" />
           <Input placeholderInput="Senha" secureTextEntry={true} />
+          <TouchableOpacity
+            activeOpacity={0.95}
+            style={styles.recoverPassword}
+            onPress={handleCreateAccount}>
+            <Text style={styles.textLink}>Esqueceu a sua senha?</Text>
+          </TouchableOpacity>
           <ButtonPrimary titleButton="Entrar" click={handleHome} />
           <View style={styles.socialLogin}>
             <ButtonGmail />
@@ -72,9 +78,7 @@ export const Login = () => {
             activeOpacity={0.95}
             style={styles.createAccount}
             onPress={handleCreateAccount}>
-            <Text style={styles.createAccountText}>
-              Criar uma conta com email
-            </Text>
+            <Text style={styles.textLink}>Criar uma conta com email</Text>
           </TouchableOpacity>
         </View>
       </View>

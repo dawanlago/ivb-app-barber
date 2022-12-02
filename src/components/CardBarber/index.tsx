@@ -43,9 +43,6 @@ export const CardBarber: React.FC<Props> = ({
             : styles.containerDetailsDefault
         }>
         <Text style={styles.textBarber}>{barberDetails.name}</Text>
-        {!barberDetails.default && (
-          <Text style={styles.textServices}>{barberDetails.services}</Text>
-        )}
       </View>
     </TouchableOpacity>
   );

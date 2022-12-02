@@ -29,19 +29,20 @@ interface IService {
   price: number;
   time: number;
 }
-interface IUser {
-  email: string;
-  password: string;
-}
+
 type screenProp = NativeStackNavigationProp<
   RootStackParamsList,
   'CreateAccount'
 >;
 export const CreateAccount = () => {
   const [services, setServices] = useState<IService[]>([]);
+  const [name, setName] = useState<string>('');
+  const [shortName, setShortName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [user, setUser] = useState<IUser>({email, password});
+  const [passwordRepeat, setPasswordRepeat] = useState<string>('');
+
   const navigation = useNavigation<screenProp>();
 
   useEffect(() => {
@@ -51,18 +52,12 @@ export const CreateAccount = () => {
   }, [services]);
 
   function handleCreateUser() {
-    const data = {
-      email,
-      password,
-    };
-    setUser(data);
-
-    createUser({email, password}).then(res => {
+    createUser({name, shortName, email, phone, password}).then(res => {
       if (!res.success) {
         Toast.show(res.message, Toast.LONG);
         return;
       }
-      navigation.navigate('Login');
+      handleLogin();
     });
   }
 
@@ -85,10 +80,17 @@ export const CreateAccount = () => {
             <Icon name="user" color={colors.darkOpacity80} size={50} />
             <Text style={styles.textImage}>Clique para alterar</Text>
           </View>
-          <Input titleInput="Nome completo" placeholderInput="" />
+          <Input
+            titleInput="Nome completo"
+            placeholderInput=""
+            value={name}
+            onChangeText={setName}
+          />
           <Input
             titleInput="Como prefere ser chamado? (opcional)"
             placeholderInput=""
+            value={shortName}
+            onChangeText={setShortName}
           />
           <Input
             titleInput="Email"
@@ -96,7 +98,12 @@ export const CreateAccount = () => {
             value={email}
             onChangeText={setEmail}
           />
-          <Input titleInput="Telefone" placeholderInput="" />
+          <Input
+            titleInput="Telefone"
+            placeholderInput=""
+            value={phone}
+            onChangeText={setPhone}
+          />
           <Input
             titleInput="Senha"
             placeholderInput=""
@@ -108,6 +115,8 @@ export const CreateAccount = () => {
             titleInput="Repetir a senha"
             placeholderInput=""
             secureTextEntry={true}
+            value={passwordRepeat}
+            onChangeText={setPasswordRepeat}
           />
         </View>
       </ScrollView>

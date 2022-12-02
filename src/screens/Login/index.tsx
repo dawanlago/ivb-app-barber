@@ -60,7 +60,7 @@ export const Login = () => {
 
         <View style={styles.contentLogin}>
           <Input placeholderInput="Email" />
-          <Input placeholderInput="Senha" />
+          <Input placeholderInput="Senha" secureTextEntry={true} />
           <ButtonPrimary titleButton="Entrar" click={handleHome} />
           <View style={styles.socialLogin}>
             <ButtonGmail />

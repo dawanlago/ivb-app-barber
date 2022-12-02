@@ -34,8 +34,8 @@ export const CardScheduleConfirm: React.FC<Props> = ({
         <Text style={styles.info}>{details.address}</Text>
       </View>
       <View style={styles.containerDetails}>
-        <Text>Bairro: </Text>
-        <Text>{details.district}</Text>
+        <Text style={styles.title}>Bairro: </Text>
+        <Text style={styles.info}>{details.district}</Text>
       </View>
       <View style={styles.containerDetails}>
         <Text style={styles.title}>Cidade/UF: </Text>

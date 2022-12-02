@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
   contentDetails: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'flex-end',
     width: '100%',
     marginHorizontal: 15,
   },
@@ -27,5 +28,14 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.title500,
     fontSize: 16,
     color: colors.textDark10,
+  },
+  detailsPrice: {
+    fontFamily: fonts.title500,
+    fontSize: 17,
+    color: colors.textDark10,
+  },
+  containerTime: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

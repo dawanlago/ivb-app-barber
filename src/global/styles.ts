@@ -11,6 +11,10 @@ export const colors = {
   btnPrimary: '#B88A2C',
   facebookPrimary: '#3B5998',
   overlay: 'rgba(0,0,0,0.85)',
+  success: '#28A745',
+  warn: '#fd951f',
+  error: '#DC3545',
+  default: '#3a405b',
 };
 
 export const fonts = {

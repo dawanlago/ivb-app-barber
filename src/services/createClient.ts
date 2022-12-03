@@ -20,7 +20,6 @@ export const createClient = async ({
     .database()
     .ref('barber-shop/000001/clients/' + uid);
 
-  console.log(name);
   client.set({
     name: name,
     shortName: shortName,

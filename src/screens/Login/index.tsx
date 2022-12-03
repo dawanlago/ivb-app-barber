@@ -32,6 +32,7 @@ interface IService {
 type screenProp = NativeStackNavigationProp<RootStackParamsList, 'Login'>;
 export const Login = () => {
   const navigation = useNavigation<screenProp>();
+
   const [services, setServices] = useState<IService[]>([]);
 
   useEffect(() => {

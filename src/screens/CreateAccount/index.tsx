@@ -8,7 +8,7 @@ import {
 import React, {useEffect, useState} from 'react';
 import {Title} from '../../components/Title';
 
-import Toast from 'react-native-simple-toast';
+import {useToast} from 'react-native-toast-notifications';
 
 import {styles} from './styles';
 import {Input} from '../../components/Input';
@@ -44,6 +44,7 @@ export const CreateAccount = () => {
   const [passwordRepeat, setPasswordRepeat] = useState<string>('');
 
   const navigation = useNavigation<screenProp>();
+  const toast = useToast();
 
   useEffect(() => {
     getServices().then(res => {
@@ -51,13 +52,37 @@ export const CreateAccount = () => {
     });
   }, [services]);
 
+  function createAccountFailed(message: string) {
+    toast.show(message, {
+      type: 'warning',
+      placement: 'top',
+      duration: 5000,
+      animationType: 'slide-in',
+    });
+  }
+
+  function createAccountSuccess(shortName: string) {
+    toast.show(
+      `Pronto${
+        shortName.length > 0 ? ', ' + shortName : ''
+      }! Confirme a sua conta usando o link que enviamos para o seu email.`,
+      {
+        type: 'success',
+        placement: 'top',
+        duration: 5000,
+        animationType: 'slide-in',
+      },
+    );
+    handleLogin();
+  }
+
   function handleCreateUser() {
     createUser({name, shortName, email, phone, password}).then(res => {
       if (!res.success) {
-        Toast.show(res.message, Toast.LONG);
+        createAccountFailed(res.message);
         return;
       }
-      handleLogin();
+      createAccountSuccess(shortName);
     });
   }
 

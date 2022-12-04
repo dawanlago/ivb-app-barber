@@ -26,4 +26,14 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.title500,
     color: colors.textDark10,
   },
+  containerTitle: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  passwordNotEqual: {
+    color: colors.error,
+    fontFamily: fonts.title500,
+    fontSize: 16,
+  },
 });

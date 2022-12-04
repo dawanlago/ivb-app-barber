@@ -6,7 +6,7 @@ const logoGmail = require('../../assets/image/google_icon.png');
 
 export const ButtonGmail: React.FC = () => {
   return (
-    <TouchableOpacity activeOpacity={0.85} style={styles.button}>
+    <TouchableOpacity activeOpacity={0.85}>
       <Image source={logoGmail} style={styles.imgGmail} />
     </TouchableOpacity>
   );

@@ -42,6 +42,7 @@ export const CreateAccount = () => {
   const [phone, setPhone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordRepeat, setPasswordRepeat] = useState<string>('');
+  const [passwordEqual, setPasswordEqual] = useState<boolean>(true);
 
   const navigation = useNavigation<screenProp>();
   const toast = useToast();
@@ -51,6 +52,42 @@ export const CreateAccount = () => {
       setServices(res);
     });
   }, [services]);
+
+  useEffect(() => {
+    if (passwordRepeat !== password && passwordRepeat.length > 0) {
+      setPasswordEqual(false);
+    } else {
+      setPasswordEqual(true);
+    }
+  }, [passwordRepeat, password]);
+
+  function validCreateAccount() {
+    if (
+      name === '' ||
+      email === '' ||
+      phone === '' ||
+      password === '' ||
+      passwordRepeat === ''
+    ) {
+      toast.show('Preencha todos os campos obrigatórios!', {
+        type: 'danger',
+        placement: 'top',
+        duration: 5000,
+        animationType: 'slide-in',
+      });
+      return false;
+    }
+    if (password !== passwordRepeat) {
+      toast.show('As senhas não são iguais!', {
+        type: 'danger',
+        placement: 'top',
+        duration: 5000,
+        animationType: 'slide-in',
+      });
+      return false;
+    }
+    return true;
+  }
 
   function createAccountFailed(message: string) {
     toast.show(message, {
@@ -77,6 +114,9 @@ export const CreateAccount = () => {
   }
 
   function handleCreateUser() {
+    if (!validCreateAccount()) {
+      return;
+    }
     createUser({name, shortName, email, phone, password}).then(res => {
       if (!res.success) {
         createAccountFailed(res.message);
@@ -119,12 +159,15 @@ export const CreateAccount = () => {
           />
           <Input
             titleInput="Email"
+            keyboardType="email-address"
             placeholderInput=""
+            autoCapitalize="none"
             value={email}
             onChangeText={setEmail}
           />
           <Input
             titleInput="Telefone"
+            keyboardType="numeric"
             placeholderInput=""
             value={phone}
             onChangeText={setPhone}
@@ -140,6 +183,8 @@ export const CreateAccount = () => {
             titleInput="Repetir a senha"
             placeholderInput=""
             secureTextEntry={true}
+            isPassword={true}
+            passwordEqual={passwordEqual}
             value={passwordRepeat}
             onChangeText={setPasswordRepeat}
           />

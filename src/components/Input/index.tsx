@@ -7,11 +7,15 @@ import {colors} from '../../global/styles';
 type Props = TextInputProps & {
   titleInput?: string;
   value?: string;
+  isPassword?: boolean;
+  passwordEqual?: boolean;
   placeholderInput: string;
 };
 export const Input: React.FC<Props> = ({
   titleInput = '',
   value,
+  isPassword,
+  passwordEqual,
   placeholderInput,
 
   ...rest
@@ -19,7 +23,12 @@ export const Input: React.FC<Props> = ({
   return (
     <View style={styles.container}>
       {titleInput.length > 0 && (
-        <Text style={styles.titleInput}>{titleInput}</Text>
+        <View style={styles.containerTitle}>
+          <Text style={styles.titleInput}>{titleInput}</Text>
+          {isPassword && !passwordEqual && (
+            <Text style={styles.passwordNotEqual}>As senhas não coincidem</Text>
+          )}
+        </View>
       )}
       <TextInput
         style={styles.input}

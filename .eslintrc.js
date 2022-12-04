@@ -30,5 +30,6 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'jest/no-identical-title': 'off',
     '@typescript-eslint/ban-types': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
 };

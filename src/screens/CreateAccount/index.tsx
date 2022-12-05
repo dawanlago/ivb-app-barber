@@ -23,6 +23,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamsList} from '../../routes/auth.routes';
 import {useNavigation} from '@react-navigation/native';
 import {createUser} from '../../services/createUser';
+import {InputMask} from '../../components/InputMask';
+import {MASK_PHONE} from '../../global/constants';
 
 interface IService {
   name: string;
@@ -165,13 +167,18 @@ export const CreateAccount = () => {
             value={email}
             onChangeText={setEmail}
           />
-          <Input
+
+          <InputMask
             titleInput="Telefone"
             keyboardType="numeric"
             placeholderInput=""
             value={phone}
-            onChangeText={setPhone}
+            onChangeText={(masked: string) => {
+              setPhone(masked);
+            }}
+            mask={MASK_PHONE}
           />
+
           <Input
             titleInput="Senha"
             placeholderInput=""
@@ -179,6 +186,7 @@ export const CreateAccount = () => {
             secureTextEntry={true}
             onChangeText={setPassword}
           />
+
           <Input
             titleInput="Repetir a senha"
             placeholderInput=""

@@ -1,13 +1,6 @@
 import {createClient} from './createClient';
 import firebase from './firebase';
-
-interface IUser {
-  name: string;
-  shortName: string;
-  email: string;
-  phone: string;
-  password: string;
-}
+import IUser from '../models/User';
 
 export const createUser = async ({
   name,

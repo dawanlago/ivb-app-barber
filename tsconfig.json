@@ -3,9 +3,13 @@
   "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
   "compilerOptions": {
     "types": ["react-native", "jest"],
-    /* Visit https://aka.ms/tsconfig.json to read more about this file */
-
-    /* Completeness */
+    "target": "es2015",
+    "module": "es2015",
+    "jsx": "react-native",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   }
 }

@@ -21,13 +21,9 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamsList} from '../../routes/auth.routes';
 import {useNavigation} from '@react-navigation/native';
 
-const logo = require('../../assets/image/logo.png');
+import IService from '../../models/Service';
 
-interface IService {
-  name: string;
-  price: number;
-  time: number;
-}
+const logo = require('../../assets/image/logo.png');
 
 type screenProp = NativeStackNavigationProp<RootStackParamsList, 'Login'>;
 export const Login = () => {

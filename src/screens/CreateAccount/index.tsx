@@ -119,7 +119,7 @@ export const CreateAccount = () => {
     }
     createUser({name, shortName, email, phone, password}).then(res => {
       if (!res.success) {
-        createAccountFailed(res.message);
+        createAccountFailed(String(res.message));
         return;
       }
       createAccountSuccess(shortName);

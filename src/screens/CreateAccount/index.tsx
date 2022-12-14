@@ -6,38 +6,34 @@ import {
   ScrollView,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+
 import {Title} from '../../components/Title';
+import {ButtonAction} from '../../components/ButtonAction';
+import {Input} from '../../components/Input';
+import {InputMask} from '../../components/InputMask';
 
 import {useToast} from 'react-native-toast-notifications';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {styles} from './styles';
-import {Input} from '../../components/Input';
-
-import {getServices} from '../../services/getServices';
-
-import Icon from 'react-native-vector-icons/Feather';
 import {colors} from '../../global/styles';
-import {ButtonAction} from '../../components/ButtonAction';
+
+import {MASK_PHONE} from '../../global/constants';
+
+import {createUserService} from '../../services/createUserService';
+
+import {useUser} from '../../store/user';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamsList} from '../../routes/auth.routes';
 import {useNavigation} from '@react-navigation/native';
-import {createUser} from '../../services/createUser';
-import {InputMask} from '../../components/InputMask';
-import {MASK_PHONE} from '../../global/constants';
-
-interface IService {
-  name: string;
-  price: number;
-  time: number;
-}
 
 type screenProp = NativeStackNavigationProp<
   RootStackParamsList,
   'CreateAccount'
 >;
 export const CreateAccount = () => {
-  const [services, setServices] = useState<IService[]>([]);
+  const {userSelected, setUserSelected} = useUser();
   const [name, setName] = useState<string>('');
   const [shortName, setShortName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -48,12 +44,6 @@ export const CreateAccount = () => {
 
   const navigation = useNavigation<screenProp>();
   const toast = useToast();
-
-  useEffect(() => {
-    getServices().then(res => {
-      setServices(res);
-    });
-  }, [services]);
 
   useEffect(() => {
     if (passwordRepeat !== password && passwordRepeat.length > 0) {
@@ -119,11 +109,12 @@ export const CreateAccount = () => {
     if (!validCreateAccount()) {
       return;
     }
-    createUser({name, shortName, email, phone, password}).then(res => {
+    createUserService({name, shortName, email, phone, password}).then(res => {
       if (!res.success) {
         createAccountFailed(String(res.message));
         return;
       }
+      setUserSelected({...userSelected, email: email});
       createAccountSuccess(shortName);
     });
   }

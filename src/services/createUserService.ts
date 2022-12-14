@@ -1,8 +1,8 @@
-import {createClient} from './createClient';
+import {createClientService} from './createClientService';
 import firebase from './firebase';
 import IUser from '../models/User';
 
-export const createUser = async ({
+export const createUserService = async ({
   name,
   shortName,
   email,
@@ -19,8 +19,10 @@ export const createUser = async ({
           messageError = 'A senha deve conter no mínimo 6 caracteres';
         } else if (err.code === 'auth/invalid-email') {
           messageError = 'O email informado é invalido';
-        } else {
+        } else if (err.code === 'auth/email-already-in-use') {
           messageError = 'O email informado ja está cadastrado';
+        } else {
+          messageError = 'Ops... houve um erro interno';
         }
       }
     });
@@ -32,6 +34,12 @@ export const createUser = async ({
     };
   }
   const uid = user.user.uid;
-  const client = await createClient({name, shortName, email, phone, uid});
-  return {success: true, data: client};
+  await createClientService({
+    name,
+    shortName,
+    email,
+    phone,
+    uid,
+  });
+  return {success: true};
 };

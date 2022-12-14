@@ -8,9 +8,9 @@ export const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'space-evenly',
     paddingHorizontal: 30,
+    paddingVertical: 50,
     height: height,
     backgroundColor: colors.light,
-    paddingBottom: 55,
   },
   header: {
     justifyContent: 'flex-start',

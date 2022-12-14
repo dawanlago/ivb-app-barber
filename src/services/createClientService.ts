@@ -1,7 +1,7 @@
 import firebase from './firebase';
 import IClient from '../models/Client';
 
-export const createClient = async ({
+export const createClientService = async ({
   name,
   shortName,
   email,
@@ -28,5 +28,5 @@ export const createClient = async ({
     };
   }
 
-  return {success: true, data: client};
+  return {success: true};
 };
